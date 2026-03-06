@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Akash Singh | Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --primary: #3f51b5;
+      --primary-dark: #303f9f;
+      --primary-light: #c5cae9;
+      --accent: #ff4081;
+      --bg: #f5f5f5;
+      --surface: #ffffff;
+      --text-primary: #212121;
+      --text-secondary: #616161;
+      --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.12);
+      --radius-card: 18px;
+      --transition-fast: 0.25s ease-out;
+      --transition-med: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #e8eaf6 0, #f5f5f5 45%, #ffffff 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- Layout ---------- */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to right,
+        rgba(245, 245, 245, 0.92),
+        rgba(255, 255, 255, 0.96)
+      );
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .app-bar {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 3px 10px rgba(63, 81, 181, 0.4);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text span:first-child {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      color: var(--text-secondary);
+      transition: background var(--transition-fast), color var(--transition-fast),
+                  transform var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      background: rgba(63, 81, 181, 0.08);
+      color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.primary {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 3px 10px rgba(63, 81, 181, 0.45);
+    }
+
+    .nav-link.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .content {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text {
+      position: relative;
+      padding: 1.5rem 1rem 1.5rem 0.25rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(63, 81, 181, 0.06);
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .chip i {
+      font-size: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+      color: #1a237e;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      max-width: 32rem;
+    }
+
+    .hero-highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+                  background var(--transition-fast), color var(--transition-fast);
+      outline: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(63, 81, 181, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 1px solid rgba(63, 81, 181, 0.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(63, 81, 181, 0.04);
+      border-color: rgba(63, 81, 181, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-pill i {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .hero-orbit-card {
+      position: relative;
+      background: radial-gradient(circle at top, var(--primary) 0, #1a237e 35%, #0d1333 100%);
+      border-radius: 30px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 18px 45px rgba(10, 18, 60, 0.8);
+      color: #e8eaf6;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+    }
+
+    .hero-orbit-card::before,
+    .hero-orbit-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(197, 202, 233, 0.3);
+      pointer-events: none;
+      animation: orbit var(--transition-med) infinite alternate;
+    }
+
+    .hero-orbit-card::before {
+      width: 220px;
+      height: 220px;
+      top: -40px;
+      right: -20px;
+      animation-duration: 14s;
+      animation-timing-function: linear;
+    }
+
+    .hero-orbit-card::after {
+      width: 380px;
+      height: 380px;
+      bottom: -180px;
+      left: -80px;
+      animation-duration: 22s;
+      animation-direction: alternate-reverse;
+      opacity: 0.6;
+    }
+
+    .card-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.2) 0, transparent 55%),
+                  radial-gradient(circle at 80% 100%, rgba(255, 64, 129, 0.35) 0, transparent 60%);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      background: rgba(12, 27, 89, 0.9);
+      border: 1px solid rgba(197, 202, 233, 0.5);
+      font-size: 0.8rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge i {
+      color: #ffeb3b;
+      font-size: 1.1rem;
+    }
+
+    .hero-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-role {
+      font-size: 0.9rem;
+      color: #c5cae9;
+      margin-bottom: 1.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quick-item {
+      background: rgba(13, 19, 51, 0.94);
+      border-radius: 16px;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid rgba(197, 202, 233, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      backdrop-filter: blur(10px);
+      transform: translateY(0);
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+                  border-color var(--transition-med), background var(--transition-med);
+    }
+
+    .quick-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(3, 10, 40, 0.85);
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(18, 30, 80, 0.98);
+    }
+
+    .quick-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9fa8da;
+    }
+
+    .quick-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .quick-muted {
+      font-size: 0.75rem;
+      color: #c5cae9;
+    }
+
+    .hero-footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: #c5cae9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00e676;
+      box-shadow: 0 0 0 6px rgba(0, 230, 118, 0.28);
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chip-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(13, 20, 60, 0.7);
+      border: 1px solid rgba(197, 202, 233, 0.4);
+      color: #c5cae9;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+                  border-color var(--transition-fast), color var(--transition-fast);
+      font-size: 0.75rem;
+    }
+
+    .chip-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #fff;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    @keyframes orbit {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate3d(10px, -12px, 0) rotate(6deg);
+      }
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a237e;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title i {
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem 1.5rem;
+      overflow: hidden;
+      position: relative;
+      transform-origin: center;
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+                  background var(--transition-med);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(63, 81, 181, 0.08) 0, transparent 60%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-med);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* ---------- About ---------- */
+    .about-body {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 720px) {
+      .about-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-body p {
+      margin-bottom: 0.75rem;
+    }
+
+    .about-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 520px) {
+      .about-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    .value {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ---------- Education & Skills ---------- */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 840px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .edu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.8rem 0.2rem;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+    }
+
+    .edu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .edu-title {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .edu-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .edu-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+      color: var(--primary-dark);
+    }
+
+    .edu-tag i {
+      font-size: 1rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-chip {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      background: rgba(63, 81, 181, 0.06);
+      color: var(--primary-dark);
+      border: 1px solid rgba(63, 81, 181, 0.16);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+                  box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .skill-chip i {
+      font-size: 1rem;
+    }
+
+    .skill-chip:hover {
+      background: rgba(63, 81, 181, 0.12);
+      transform: translateY(-1px);
+      border-color: rgba(63, 81, 181, 0.4);
+      box-shadow: 0 4px 10px rgba(63, 81, 181, 0.25);
+    }
+
+    .skill-level {
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .skill-bar {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      background: rgba(63, 81, 181, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.4rem;
+    }
+
+    .skill-bar-fill {
+      position: absolute;
+      inset: 0;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      box-shadow: 0 0 8px rgba(63, 81, 181, 0.8);
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 780px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.4rem 0.2rem;
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(63, 81, 181, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .social-btn {
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.9);
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+                  box-shadow var(--transition-fast), transform var(--transition-fast),
+                  color var(--transition-fast);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .social-btn.instagram {
+      border-color: rgba(225, 48, 108, 0.5);
+      color: #e1306c;
+    }
+
+    .social-btn.linkedin {
+      border-color: rgba(10, 102, 194, 0.6);
+      color: #0a66c2;
+    }
+
+    .social-btn.instagram:hover {
+      background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .social-btn.linkedin:hover {
+      background: #0a66c2;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .contact-cta {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+    }
+
+    .contact-cta strong {
+      color: var(--primary-dark);
+    }
+
+    /* ---------- Animations: Scroll Reveal ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+      transition:
+        opacity var(--transition-med),
+        transform var(--transition-med),
+        box-shadow var(--transition-med);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 1.4rem 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    footer span {
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- App Bar -->
+    <header>
+      <div class="app-bar">
+        <div class="brand">
+          <div class="brand-avatar">AS</div>
+          <div class="brand-text">
+            <span>Akash Singh</span>
+            <span>B.Tech CSE • Fresher</span>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-link" data-scroll="#about">About</button>
+          <button class="nav-link" data-scroll="#education">Education</button>
+          <button class="nav-link" data-scroll="#skills">Skills</button>
+          <button class="nav-link" data-scroll="#contact">Contact</button>
+          <button class="nav-link primary" data-scroll="#contact">
+            <i class="material-icons-outlined" style="font-size:16px;">send</i>
+            Hire Me
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="content">
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-text reveal">
+            <div class="chip">
+              <i class="material-icons-outlined">code</i>
+              Aspiring C / C++ Developer
+            </div>
+
+            <h1 class="hero-title">Hi, I'm Akash Singh</h1>
+            <p class="hero-subtitle">
+              B.Tech (CSE) student at IIlm University, building a strong base in
+              <span class="hero-highlight">C and C++</span>. I love problem solving, clean code,
+              and learning how real‑world software is built.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-scroll="#contact">
+                <i class="material-icons-outlined">chat</i>
+                Contact Me
+              </button>
+              <button class="btn btn-outline" data-scroll="#education">
+                <i class="material-icons-outlined">school</i>
+                View Academics
+              </button>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-pill">
+                <i class="material-icons-outlined">badge</i>
+                B.Tech CSE • 2026–2030 (expected)
+              </div>
+              <div class="meta-pill">
+                <i class="material-icons-outlined">calendar_today</i>
+                DOB: 26 Jan 2008
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-orbit-card reveal">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="hero-badge">
+              <i class="material-icons-outlined">rocket_launch</i>
+              Ready to grow as a developer
+            </div>
+            <div class="hero-name">Akash Singh</div>
+            <div class="hero-role">B.Tech (CSE) • IIlm University</div>
+
+            <div class="quick-grid">
+              <div class="quick-item">
+                <span class="quick-label">Current Focus</span>
+                <span class="quick-value">Mastering C & C++</span>
+                <span class="quick-muted">DSA & fundamentals</span>
+              </div>
+              <div class="quick-item">
+                <span class="quick-label">Education</span>
+                <span class="quick-value">10th: 84% • 12th: 67%</span>
+                <span class="quick-muted">Strong academic base</span>
+              </div>
+              <div class="quick-item">
+                <span class="quick-label">University</span>
+                <span class="quick-value">IIlm University</span>
+                <span class="quick-muted">B.Tech (CSE)</span>
+              </div>
+              <div class="quick-item">
+                <span class="quick-label">Open To</span>
+                <span class="quick-value">Internships & projects</span>
+                <span class="quick-muted">Learning with real code</span>
+              </div>
+            </div>
+
+            <div class="hero-footer">
+              <div class="hero-status">
+                <div class="hero-status-dot"></div>
+                <span>Actively learning & available</span>
+              </div>
+              <div class="hero-social">
+                <a
+                  class="chip-link"
+                  href="https://www.linkedin.com/in/akash-singh-raghuvanshi-9919ba36a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="material-icons-outlined" style="font-size:16px;">business_center</i>
+                  LinkedIn
+                </a>
+                <a
+                  class="chip-link"
+                  href="https://www.instagram.com/akash_raghuvansi__?igsh=MXVzbGRrYXd4bDVrNg=="
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="material-icons-outlined" style="font-size:16px;">photo_camera</i>
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="reveal">
+          <div class="section-header">
+            <div class="section-title">
+              <i class="material-icons-outlined">person</i>
+              About Me
+            </div>
+            <div class="section-subtitle">
+              A fresher developer focused on strong fundamentals and clean logic.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="about-body">
+              <div>
+                <p>
+                  I'm <strong>Akash Singh</strong>, a B.Tech (Computer Science Engineering) student
+                  at <strong>IIlm University</strong>. I’ve started my programming journey with
+                  <strong>C</strong> and am currently learning <strong>C++</strong>, focusing on
+                  understanding how things work under the hood.
+                </p>
+                <p>
+                  Right now, my goal is to build a solid base in programming, data structures,
+                  and problem solving so that I can contribute to real projects, internships, and
+                  open‑source work. I love learning by doing and want to grow into a reliable
+                  software developer.
+                </p>
+              </div>
+
+              <ul class="about-list">
+                <li>
+                  <span class="label">Name</span>
+                  <span class="value">Akash Singh</span>
+                </li>
+                <li>
+                  <span class="label">Date of Birth</span>
+                  <span class="value">26 / 01 / 2008</span>
+                </li>
+                <li>
+                  <span class="label">University</span>
+                  <span class="value">IIlm University</span>
+                </li>
+                <li>
+                  <span class="label">Course</span>
+                  <span class="value">B.Tech (Computer Science Engineering)</span>
+                </li>
+                <li>
+                  <span class="label">10th Percentage</span>
+                  <span class="value">84%</span>
+                </li>
+                <li>
+                  <span class="label">12th Percentage</span>
+                  <span class="value">67%</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education & Skills -->
+        <section id="education" class="reveal">
+          <div class="section-header">
+            <div class="section-title">
+              <i class="material-icons-outlined">school</i>
+              Education & Skills
+            </div>
+            <div class="section-subtitle">
+              Building a strong academic base with a focus on core programming.
+            </div>
+          </div>
+
+          <div class="two-col">
+            <!-- Education -->
+            <div class="card">
+              <div class="edu-item">
+                <div class="edu-title">B.Tech in Computer Science Engineering</div>
+                <div class="edu-meta">
+                  IIlm University • Undergraduate
+                </div>
+                <div class="edu-tag">
+                  <i class="material-icons-outlined">event</i>
+                  Currently pursuing
+                </div>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-title">Senior Secondary (12th)</div>
+                <div class="edu-meta">
+                  Percentage: <strong>67%</strong>
+                </div>
+                <div class="edu-tag">
+                  <i class="material-icons-outlined">verified</i>
+                  Completed
+                </div>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-title">High School (10th)</div>
+                <div class="edu-meta">
+                  Percentage: <strong>84%</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills -->
+            <div id="skills" class="card">
+              <div class="section-subtitle" style="margin-bottom:0.75rem;">
+                Technologies I'm learning and focusing on right now.
+              </div>
+
+              <div class="skill-chips">
+                <span class="skill-chip">
+                  <i class="material-icons-outlined">terminal</i>
+                  C Programming
+                </span>
+                <span class="skill-chip">
+                  <i class="material-icons-outlined">integration_instructions</i>
+                  C++ (in progress)
+                </span>
+                <span class="skill-chip">
+                  <i class="material-icons-outlined">psychology</i>
+                  Problem Solving Mindset
+                </span>
+                <span class="skill-chip">
+                  <i class="material-icons-outlined">insights</i>
+                  Strong Academic Discipline
+                </span>
+              </div>
+
+              <div class="skill-level">
+                C fundamentals
+                <div class="skill-bar">
+                  <div class="skill-bar-fill" data-level="75"></div>
+                </div>
+              </div>
+
+              <div class="skill-level">
+                C++ (current learning progress)
+                <div class="skill-bar">
+                  <div class="skill-bar-fill" data-level="40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="reveal">
+          <div class="section-header">
+            <div class="section-title">
+              <i class="material-icons-outlined">mail</i>
+              Contact & Socials
+            </div>
+            <div class="section-subtitle">
+              Feel free to reach out for internships, projects, or guidance.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="contact-grid">
+              <div>
+                <ul class="contact-list">
+                  <li class="contact-row">
+                    <div class="contact-icon">
+                      <i class="material-icons-outlined">phone</i>
+                    </div>
+                    <div class="contact-text">
+                      <span class="label">Phone</span>
+                      <span class="value">+91 84709 68608</span>
+                    </div>
+                  </li>
+
+                  <li class="contact-row">
+                    <div class="contact-icon">
+                      <i class="material-icons-outlined">school</i>
+                    </div>
+                    <div class="contact-text">
+                      <span class="label">University</span>
+                      <span class="value">IIlm University • B.Tech (CSE)</span>
+                    </div>
+                  </li>
+
+                  <li class="contact-row">
+                    <div class="contact-icon">
+                      <i class="material-icons-outlined">person</i>
+                    </div>
+                    <div class="contact-text">
+                      <span class="label">Profile Summary</span>
+                      <span class="value">
+                        C & C++ learner with strong school academics, looking for opportunities
+                        to apply concepts in real projects and grow as a developer.
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="label">Social Profiles</div>
+                <div class="social-row">
+                  <a
+                    class="social-btn linkedin"
+                    href="https://www.linkedin.com/in/akash-singh-raghuvanshi-9919ba36a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i class="material-icons-outlined" style="font-size:16px;">business</i>
+                    LinkedIn Profile
+                  </a>
+                  <a
+                    class="social-btn instagram"
+                    href="https://www.instagram.com/akash_raghuvansi__?igsh=MXVzbGRrYXd4bDVrNg=="
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i class="material-icons-outlined" style="font-size:16px;">camera_alt</i>
+                    Instagram
+                  </a>
+                </div>
+
+                <p class="contact-cta">
+                  <strong>How I can add value:</strong> I bring consistency, eagerness to learn,
+                  and a strong foundation from my academics. I’m looking for mentors, internships,
+                  and real‑world coding experience to grow fast.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        Designed for <span>developer profile</span> • Built with a Material‑style theme and smooth
+        animations.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll navigation
+    document.querySelectorAll("[data-scroll]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = document.querySelector(btn.getAttribute("data-scroll"));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+
+    // Skill bar animation
+    const skillBars = document.querySelectorAll(".skill-bar-fill");
+    const skillObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const level = entry.target.getAttribute("data-level");
+            entry.target.style.width = level + "%";
+            skillObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    skillBars.forEach((bar) => skillObserver.observe(bar));
+  </script>
+</body>
+</html>
